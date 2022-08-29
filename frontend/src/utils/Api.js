@@ -65,7 +65,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: "api.ya.mesto.nomorepartiesxyz.ru",
+  url: "http://api.ya.mesto.nomorepartiesxyz.ru",
   headers: {
     authorization: `Bearer ${localStorage.getItem('jwt')}`,
     "content-type": "application/json",
