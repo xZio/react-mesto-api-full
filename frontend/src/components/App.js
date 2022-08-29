@@ -115,6 +115,7 @@ function App() {
         setLoggedIn(true);
         setUserEmail(email);
         navigate("/");
+        
       })
       .catch((err) => {
         setIsRegistrationError(true);

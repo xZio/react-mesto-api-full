@@ -1,4 +1,4 @@
-export const BASE_URL = "http://api.ya.mesto.nomorepartiesxyz.ru";
+export const BASE_URL = "api.ya.mesto.nomorepartiesxyz.ru";
 
 export function checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(res.status);

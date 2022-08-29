@@ -6,6 +6,8 @@ const ConflictError = require('../utils/conflict-error');
 const NotFoundError = require('../utils/not-found-error');
 const UnauthorizedError = require('../utils/unauthorized-error');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUsers = (req, res, next) => {
   User.find({})
     .then((users) => {
@@ -109,7 +111,7 @@ module.exports.login = (req, res, next) => {
         if (!matched) {
           throw new UnauthorizedError('Неправильная почта или пароль');
         }
-        const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+        const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
 
         return res.send({ token });
       });
