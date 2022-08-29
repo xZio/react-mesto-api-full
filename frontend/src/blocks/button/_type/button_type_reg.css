@@ -1,0 +1,14 @@
+.button_type_reg {
+  background-color: #fff;
+  width: 358px;
+  height: 50px;
+  border-radius: 2px;
+  margin-top: 188px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.button_type_reg:hover {
+  opacity: 0.85;
+}
