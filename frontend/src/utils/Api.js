@@ -14,14 +14,20 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        "content-type": "application/json",
+      },
     }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        "content-type": "application/json",
+      },
     }).then(this._checkResponse);
   }
 
@@ -67,7 +73,7 @@ class Api {
 export const api = new Api({
   url: "https://api.ya.mesto.nomorepartiesxyz.ru",
   headers: {
-    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "content-type": "application/json",
   },
 });

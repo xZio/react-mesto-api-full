@@ -47,9 +47,9 @@ function App() {
       auth
         .getContent(jwt)
         .then((res) => {
-          setUserEmail(res.email);
           setLoggedIn(true);
           navigate("/");
+          setUserEmail(res.email);
         })
         .catch((err) => {
           console.log(err);
@@ -115,7 +115,6 @@ function App() {
         setLoggedIn(true);
         setUserEmail(email);
         navigate("/");
-        
       })
       .catch((err) => {
         setIsRegistrationError(true);
