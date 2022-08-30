@@ -60,6 +60,7 @@ function App() {
 
   React.useEffect(() => {
     if (loggedIn) {
+      api.setHeaders();
       Promise.all([api.getUserInfo(), api.getCards()])
         .then(([data, cards]) => {
           setCurrentUser(data);

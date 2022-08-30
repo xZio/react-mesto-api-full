@@ -1,3 +1,5 @@
+import { BASE_URL } from "./auth";
+
 class Api {
   constructor(config) {
     this._url = config.url;
@@ -14,20 +16,14 @@ class Api {
   getCards() {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        "content-type": "application/json",
-      },
+      headers: this._headers,
     }).then(this._checkResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("jwt")}`,
-        "content-type": "application/json",
-      },
+      headers: this._headers,
     }).then(this._checkResponse);
   }
 
@@ -68,10 +64,19 @@ class Api {
       body: JSON.stringify({ avatar: url }),
     }).then(this._checkResponse);
   }
+
+  setHeaders() {
+this._headers = {
+  ...this._headers,
+  authorization: `Bearer ${localStorage.getItem("jwt")}`
+}
+
+
+  }
 }
 
 export const api = new Api({
-  url: "https://api.ya.mesto.nomorepartiesxyz.ru",
+  url: BASE_URL,
   headers: {
     authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "content-type": "application/json",
